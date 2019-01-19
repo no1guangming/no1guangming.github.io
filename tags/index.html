@@ -12,7 +12,7 @@ theme: red
                 <ul class="nav nav-pills">
                     {% for tag in site.tags %}
                     <li class="red" style="margin:5px">
-                        <a href="/tags/{{ tag | first | slugize }}/"> {{ tag | first }}&nbsp;<span class="badge">{{ tag | last | size}}</span></a>
+                        <a href="{{site.baseurl}}/tags/index.html?tag={{ tag | first }}"> {{ tag | first }}&nbsp;<span class="badge">{{ tag | last | size}}</span></a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -26,26 +26,40 @@ theme: red
     <div class="row">
         <div class="col-md-12">
             <section>
-            {% capture tags %}
                 {% for tag in site.tags %}
-                    {{ tag[0] }}
-                {% endfor %}
-            {% endcapture %}
-
-            {% assign sortedtags = tags | split:' ' | sort %}
-
-            {% for tag in sortedtags %}
-                <h3 id="{{tag}}">{{tag}}</h3>
-                <ul>
-                    {% for post in site.posts %}
-                        {% for otag in post.tags %}
-                            {% if tag == otag %}
-                                <li class="alink"><a href="{{ post.url }}" class="red-link">{{ post.title }}</a></li>
-                            {% endif %}
-                        {% endfor %}
+                <h3 id="{{tag[0]}}" style="display:none;" tag="{{tag[0]}}">{{tag[0]}}</h3>
+                <ul style="display:none;" tag="{{tag[0]}}">
+                    {% for post in tag[1] %}
+                    <li class="alink"><a href="{{site.baseurl}}{{ post.url }}" class="red-link">{{ post.title }}</a></li>
                     {% endfor %}
                 </ul>
-            {% endfor %}
+                {% endfor %}
             </section>
         </div>
     </div>
+    <script>
+        // github的jekyll不支持tag生成静态文件
+        // 通过一个页面内的显示隐藏实现
+        function getQueryString(name) { 
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+            var r = window.location.search.substr(1).match(reg); 
+            if (r != null) return unescape(r[2]); 
+            return null; 
+        }
+        var tagName = getQueryString('tag')
+        let attrFilter = '[tag]'
+        if(tagName){
+            attrFilter = '[tag="'+tagName+'"]'
+        }
+        var dom1 = document.querySelectorAll('h3'+attrFilter)
+        var dom2 = document.querySelectorAll('ul'+attrFilter)
+        for(var i=0;i<dom1.length;i++){
+            dom1[i].style.display = 'block'
+            dom2[i].style.display = 'block'
+        }
+        // 改变标题
+        if(document.querySelectorAll('h1')[1]){
+            var text = document.querySelectorAll('h1')[1].innerText
+            document.querySelectorAll('h1')[1].innerText = text +' - '+ tagName
+        }
+    </script>

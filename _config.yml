@@ -1,7 +1,6 @@
 # Configurations
 markdown: kramdown
 
-
 # Needed for backward compatibility
 gems: [jekyll-paginate]
 
@@ -12,7 +11,6 @@ permalink:        /blog/:year/:month/:day/:title
 title:            '獨孤求敗'
 tagline:          '学而时习之，不亦乐乎'
 description:      '一个差时症患者'
-url:              ''
 baseurl:          ''
 
 # Navigation
@@ -47,9 +45,6 @@ linkedin:       'https://www.linkedin.com/in/no1guangming/'
 rss:
 stackoverflow:  'https://stackoverflow.com/users/10936561/'
 twitter:        'https://twitter.com/no1guangming'
-
-# Google Analytics
-gahandler: 'UA-52149651-1'
 
 #if footersvg is 'true' the social media links will be shown top on the copy right in the footer
 footersvg: 'true'
