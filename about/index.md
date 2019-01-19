@@ -1,19 +1,22 @@
 ---
 layout: page
-title: Hi, I am Abdel Raoof Olakara
-description: About Me page of Abdel Raoof
+title: Hi, I am Abdel guangming wang
+description: About Me page of guangming wang
 theme: purple
 ---
 
-I am a web focused developer mostly working using Microsoft .Net technologies. Occasionally, I end up working on non web related projects. I am based in Abu Dhabi, United Arab Emirates and work for C4 Advanced Solution as Application Developer.
-This is my personal website and blog where I put down my thoughts, solutions to problems and learning notes.
+→_→嗨，我是王光明，来自湖北黄冈，我在学习编程。
+
+永远不要说“太迟了”。
+
+对于少年来说，世界上没有“太迟”这件事，少年一直就在起跑线上，少年从来不认输。只有变老的人，才会这样。哎呦，我现在恋爱是不是太晚了，我现在学这个技能是不是太晚了。从来没有“太晚了”这件事，如果你不变老的话。想到什么，立即去做，即便明天就反悔，好歹也是尝试过了。如果不尝试，那又怎么会知道你会后悔呢？
 
 ## Stack Overflow
 
 Stackoverflow is a online community I hang around a lot during my free time. You can find me answering questions on Sencha's Ext Js , C# and Java. Here is my flair:
 
-<a href="http://stackexchange.com/users/62487">
-<img src="http://stackexchange.com/users/flair/62487.png?theme=clean" width="208" height="58" alt="profile for Abdel Olakara on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Abdel Olakara on Stack Exchange, a network of free, community-driven Q&amp;A sites">
+<a href="http://stackexchange.com/users/10936561>
+<img src="http://stackexchange.com/users/flair/10936561.png?theme=clean" width="208" height="58" alt="profile for Abdel Olakara on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Abdel Olakara on Stack Exchange, a network of free, community-driven Q&amp;A sites">
 </a>
 
 
