@@ -49,13 +49,13 @@ twitter:        'https://twitter.com/no1guangming'
 #if footersvg is 'true' the social media links will be shown top on the copy right in the footer
 footersvg: 'true'
 
-# Disqus
-disqushandler: 'testingblogo'
-
-
-
-# txtpen
-txtpenhandler: 'testingblogo'
+# GitTalk
+GitTalk:
+  enable: true
+  clientID: 'aa1c5f6fa8bde34b2855'
+  clientSecret: 'a5ec69201e60958beffaba8ace8fb48151a58c1b'
+  repo: 'no1guangming.github.io'
+  owner: 'no1guangming'
 
 # Blog Configurations
 paginate: 10 # Posts per page on the blog index
