@@ -95,9 +95,9 @@ description: Home Page for Jekyll Metro Theme
 				</a>
 			</div>
 
-			<div class="col-md-2 col-sm-3 col-xs-6">
-				<a href="{{site.gplus}}" title="Google Plus"  class="tile orange">
-					<i class="icon-gpls" style="font-size:8em"></i>
+			<div class="col-md-2 col-sm-3 col-xs-6 social-container">
+				<a href="{{site.douban}}" title="豆瓣"  class="tile orange">
+					<img src="{{site.baseurl}}/assets/images/icon/douban.png">
 				</a>
 			</div>
 
@@ -108,11 +108,9 @@ description: Home Page for Jekyll Metro Theme
 			</div>
 
 			<div class="col-md-2 col-sm-3 col-xs-6">
-
 				<a href="{{site.github}}" title="Github" class="tile purple">
 					<i class="icon-gthb" style="font-size:8em"></i>
 				</a>
-
 			</div>
 
 			<div class="col-md-2 col-sm-3 col-xs-6">
@@ -123,3 +121,16 @@ description: Home Page for Jekyll Metro Theme
 		</div>
 	</nav>
 </div>
+<style>
+.social-container{
+	text-align: left;
+	user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+}
+.social-container img{
+	display: inline-block;
+	height: 100%;
+	width: auto;
+}
+</style>
