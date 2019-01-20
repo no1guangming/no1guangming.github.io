@@ -1,0 +1,14 @@
+{% if site.GitTalk.enable and site.GitTalk.enable!="" %}
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '{{site.GitTalk.clientID}}',
+      clientSecret: '{{site.GitTalk.clientSecret}}',
+      repo: '{{site.GitTalk.repo}}',
+      owner: '{{site.GitTalk.owner}}',
+      admin: ['{{site.GitTalk.owner}}'],
+      id: window.location.pathname,
+    });
+    gitalk.render('gitalk-container');
+</script> 
+{% endif %}

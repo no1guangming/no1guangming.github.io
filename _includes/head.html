@@ -30,6 +30,11 @@
   <script src="{{site.baseurl}}/assets/js/jquery.magnific-popup.min.js"></script>
   <script src="{{site.baseurl}}/assets/js/app.js"></script>
 
+  {% if site.GitTalk.enable and site.GitTalk.enable!="" %}
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+  {% endif %}
+  
   {% if page.title == "Home" %}
   <!-- Add background-image -->
   <script>
