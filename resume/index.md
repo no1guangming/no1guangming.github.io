@@ -8,6 +8,11 @@ theme: red
 
 
 
+## 在读的书
+[增长黑客](https://github.com/no1guangming/no1guangming.github.io/blob/master/%E5%A2%9E%E9%95%BF%E9%BB%91%E5%AE%A2.pdf)
+     
+      
+
 
 
 
