@@ -23,17 +23,17 @@ description: Home Page for Jekyll Metro Theme
 		    </div>
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="resume/" title="Resume" class="tile red">
-					<i class="icon-rems" style="font-size:8em"></i>
+					<i class="iconfont icon-jianli"></i>
 				</a>
 			</div>
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="blog/" title="Blog"  class="tile orange">
-					<i class="icon-blog" style="font-size:8em"></i>
+					<i class="iconfont icon-ego-blog"></i>
 				</a>
 			</div>
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="feed.xml" title="RSS Feed" class="tile orange">
-					<i class="icon-rss" style="font-size:8em"></i>
+					<i class="iconfont icon-rss"></i>
 				</a>
 			</div>
 		</div>
@@ -46,7 +46,7 @@ description: Home Page for Jekyll Metro Theme
 					<div class="tile green">
 						<h3 class="title">Recent Article</h3>
 						<h4 class="title">{{ post.title }}</h4>
-						<p> {{ post.content | strip_html | truncatewords: 10 }}</p>
+						<p> {{ post.content | strip_html | truncate: 80 }}</p>
 					</div>
 				</a>
 				{% endfor %}
@@ -59,7 +59,7 @@ description: Home Page for Jekyll Metro Theme
 					<div class="tile red">
 						<h3 class="title">Latest Article</h3>
 						<h4 class="title">{{ post.title }}</h4>
-						<p> {{ post.content | strip_html | truncate: 180 }}</p>
+						<p> {{ post.content | strip_html | truncate: 80 }}</p>
 					</div>
 				</a>
 				{% endfor %}
@@ -67,7 +67,7 @@ description: Home Page for Jekyll Metro Theme
 
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="{{site.stackoverflow}}" title="StackOverflow" class="tile darken" >
-					<i class="icon-skow" style="font-size:8em;color:white"></i>
+					<i class="iconfont icon-stack-overflow"></i>
 				</a>
 			</div>
 
@@ -78,7 +78,7 @@ description: Home Page for Jekyll Metro Theme
 						<div class="tile orange">
 							<h3 class="title">Featured Article</h3>
 							<h4 class="title">{{ post.title }}</h4>
-							<p> {{ post.content | strip_html | truncatewords: 10 }}</p>
+							<p> {{ post.content | strip_html | truncate: 80 }}</p>
 						</div>
 					</a>
 					{% break %}
@@ -91,46 +91,33 @@ description: Home Page for Jekyll Metro Theme
 
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="{{site.twitter}}" title="Twitter" class="tile blue">
-					<i class="icon-twtr" style="font-size:8em"></i>
+					<i class="iconfont icon-twitter"></i>
 				</a>
 			</div>
 
-			<div class="col-md-2 col-sm-3 col-xs-6 social-container">
+			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="{{site.douban}}" title="豆瓣"  class="tile orange">
-					<img src="{{site.baseurl}}/assets/images/icon/douban.png">
+					<i class="iconfont icon-douban"></i>
 				</a>
 			</div>
 
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="{{site.facebook}}" class="tile blue">
-					<i class="icon-fcbk" style="font-size:8em"></i>
+					<i class="iconfont icon-facebook"></i>
 				</a>
 			</div>
 
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="{{site.github}}" title="Github" class="tile purple">
-					<i class="icon-gthb" style="font-size:8em"></i>
+					<i class="iconfont icon-github"></i>
 				</a>
 			</div>
 
 			<div class="col-md-2 col-sm-3 col-xs-6">
 				<a href="{{site.linkedin}}" title="LinkedIn" class="tile blue">
-					<i class="icon-lkin" style="font-size:8em"></i>
+					<i class="iconfont icon-linkedin"></i>
 				</a>
 			</div>
 		</div>
 	</nav>
 </div>
-<style>
-.social-container{
-	text-align: left;
-	user-select: none;
-	-webkit-user-drag: none;
-	-webkit-user-select: none;
-}
-.social-container img{
-	display: inline-block;
-	height: 100%;
-	width: 100%;
-}
-</style>
