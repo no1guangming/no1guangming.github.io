@@ -5,6 +5,9 @@ description: Resume of guangming wang
 theme: red
 ---
 
+<span id="jinrishici-sentence">正在加载今日诗词....</span>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
 
 
 我是一个菜鸟，就这样！
@@ -13,8 +16,14 @@ theme: red
 
 
       
-<span id="jinrishici-sentence">正在加载今日诗词....</span>
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+
+
+
+
+
+
+
 
 
 
