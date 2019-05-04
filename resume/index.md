@@ -29,3 +29,17 @@ theme: red
 本网站模板作者，来自阿拉伯联合酋长国的大神，好喜欢他写的这个模板。
 
 
+
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'https://api.comments.hk/');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      var data = JSON.parse(xhr.responseText);
+      var hotComments = document.getElementById('hotComments');
+      hotComments.innerText = data.comment_content;
+    }
+  }
+  xhr.send();
+</script>
+
