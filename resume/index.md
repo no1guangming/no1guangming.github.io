@@ -30,16 +30,4 @@ theme: red
 
 
 
-<script>
-  var xhr = new XMLHttpRequest();
-  xhr.open('get', 'https://api.comments.hk/');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      var data = JSON.parse(xhr.responseText);
-      var hotComments = document.getElementById('hotComments');
-      hotComments.innerText = data.comment_content;
-    }
-  }
-  xhr.send();
-</script>
 
