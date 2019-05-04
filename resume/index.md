@@ -10,23 +10,12 @@ theme: red
 
 
 
-
-
-
 ##  我是一个菜鸟，就这样！
 
 
 
 
       
-
-
-
-
-
-
-
-
 ## 友情链接
 
 [TMaize](http://blog.tmaize.net/)
@@ -39,14 +28,4 @@ theme: red
 
 本网站模板作者，来自阿拉伯联合酋长国的大神，好喜欢他写的这个模板。
 
-
-<footer id="footer" role="contentinfo">
-
-    <span id="jinrishici-sentence">正在加载今日诗词....</span>
-    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    <br>
-
-    &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>.
-    <?php _e('由 <a href="http://www.typecho.org">Typecho</a> 强力驱动'); ?>.
-</footer><!-- end #footer -->
 
