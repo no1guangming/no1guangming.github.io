@@ -24,6 +24,9 @@ theme: red
 
 ##  我是一个菜鸟，就这样！
 
+<iframe src="https://o3o.ca/@no1guangming/102977350916628574/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://o3o.ca/embed.js" async="async"></script>
+
+
 《天蝎座之歌》 
  
  原曲：《她妈妈不喜欢我》 
