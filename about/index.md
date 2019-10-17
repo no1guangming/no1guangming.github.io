@@ -5,7 +5,7 @@ description: About Me page of guangming wang
 theme: purple
 ---
 
-→_→嗨，我是王光明，来自湖北黄冈，我在学习编程。
+## →_→嗨，我是王光明，来自湖北黄冈，我在学习编程。
 
 永远不要说“太迟了”。
 
