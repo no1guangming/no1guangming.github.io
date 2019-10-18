@@ -43,6 +43,12 @@ theme: purple
 欢迎大家来豆瓣[douban](https://www.douban.com/people/no1guangming/)找我，或者给我发邮件，我的邮箱是bm8xZ3VhbmdtaW5nQGdtYWlsLmNvbQ==
 
 
-<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+<script type="text/javascript" src="https://api.uixsj.cn/hitokoto/en.php?code=js"></script><div id="enhitokoto"><script>enhitokoto()</script></div>
+
+
+![](http://wx4.sinaimg.cn/large/00745YaMgy1g824dms4e9g30dc0gonph.gif)
+
+
+<script type="text/javascript" src="https://api.uixsj.cn/hitokoto/w.php?code=js"></script><div id="xsjhitokoto"><script>xsjhitokoto()</script></div>
 
 
