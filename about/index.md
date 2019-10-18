@@ -43,3 +43,6 @@ theme: purple
 欢迎大家来豆瓣[douban](https://www.douban.com/people/no1guangming/)找我，或者给我发邮件，我的邮箱是bm8xZ3VhbmdtaW5nQGdtYWlsLmNvbQ==
 
 
+<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+
+
