@@ -4,6 +4,8 @@ title: Hi, I am  guangming wang
 description: About Me page of guangming wang
 theme: purple
 ---
+<iframe src="https://o3o.ca/@no1guangming/103015636276374550/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://o3o.ca/embed.js" async="async"></script>  
+
 
 <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <div id="poem_sentence"></div>
