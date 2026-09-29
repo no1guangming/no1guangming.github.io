@@ -52,8 +52,8 @@ footersvg: 'true'
 # GitTalk
 GitTalk:
   enable: true
-  clientID: 'aa1c5f6fa8bde34b2855'
-  clientSecret: 'a5ec69201e60958beffaba8ace8fb48151a58c1b'
+  clientID: 'Ov23li1JYC0N3Fgbc60S'
+  clientSecret: 'b56e83617a592545c9eb674669c19a50e29f0835'
   repo: 'no1guangming.github.io'
   owner: 'no1guangming'
 
