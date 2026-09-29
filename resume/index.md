@@ -5,7 +5,7 @@ description: Resume of guangming wang
 theme: red
 ---
 
-![](http://ww1.sinaimg.cn/large/93722188gy1g7rw5h6av0g208s06ckjm.gif)
+
 
 
 <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
@@ -24,7 +24,7 @@ theme: red
 
 ##  我是一个菜鸟，就这样！
 
-<iframe src="https://o3o.ca/@no1guangming/102977350916628574/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://o3o.ca/embed.js" async="async"></script>
+
 
 
 《天蝎座之歌》 
