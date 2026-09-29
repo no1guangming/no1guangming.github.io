@@ -3,6 +3,7 @@ layout: page
 title: Hi, I am  guangming wang
 description: About Me page of guangming wang
 theme: purple
+date:2026-09-29
 ---
  
 
