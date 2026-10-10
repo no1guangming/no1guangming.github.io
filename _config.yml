@@ -61,6 +61,10 @@ GitTalk:
 paginate: 10 # Posts per page on the blog index
 paginate_path: '/blog/page:num'
 destination: ./_site
+plugins:
+  - jekyll-sitemap
+
+
 
 # Custom vars
 version:          0.9x beta 2
