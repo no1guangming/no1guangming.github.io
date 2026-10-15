@@ -6,8 +6,19 @@
   <meta name="description" content="{{site.description}}">
   {% endif %}
   <meta name="author" content="{{site.author}}">
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <!-- Enable responsiveness on mobile devices (no zoom lock) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Canonical & Open Graph -->
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  {% if page.title == "Home" %}
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/bcg1.jpg">
+  {% endif %}
 
   {% if page.title == "Home" %}
   <title>{{ site.title }} &middot; {{ site.tagline }}</title>
@@ -24,32 +35,24 @@
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/magnific-popup.css">
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/controls.css">
 
-  <script src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
-  <script src="{{site.baseurl}}/assets/js/bootstrap.min.js"></script>
-  <script src="{{site.baseurl}}/assets/js/jekyll-search.js"></script>
-  <script src="{{site.baseurl}}/assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="{{site.baseurl}}/assets/js/app.js"></script>
+  <!-- JS: defer so they never block first paint; order preserved -->
+  <script defer src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
+  <script defer src="{{site.baseurl}}/assets/js/bootstrap.min.js"></script>
+  <script defer src="{{site.baseurl}}/assets/js/jekyll-search.js"></script>
+  <script defer src="{{site.baseurl}}/assets/js/jquery.magnific-popup.min.js"></script>
+  <script defer src="{{site.baseurl}}/assets/js/app.js"></script>
 
-  {% if site.GitTalk.enable and site.GitTalk.enable!="" %}
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
-  {% endif %}
-  
   {% if page.title == "Home" %}
-  <!-- Add background-image -->
+  <!-- Random background image: set a CSS custom property (no document.write, no FOUC) -->
   <script>
-    var backgroundImage = [];
-    var imageBase = '{{site.baseurl}}/assets/images/'
-    backgroundImage[0]=imageBase+'bcg1.jpg';
-    backgroundImage[1]=imageBase+'bcg2.jpg';
-    backgroundImage[2]=imageBase+'bcg3.jpg';
-    backgroundImage[3]=imageBase+'bcg4.jpg';
-    var random=Math.floor(Math.random()*4);
-    document.write("<style>body {background: url("+backgroundImage[random]+") no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;color:#fff;background-color:#333;}</style>")
+    (function () {
+      var imageBase = '{{site.baseurl}}/assets/images/';
+      var images = ['bcg1.jpg', 'bcg2.jpg', 'bcg3.jpg', 'bcg4.jpg'];
+      var pick = images[Math.floor(Math.random() * images.length)];
+      document.documentElement.style.setProperty('--bg-image', 'url(' + imageBase + pick + ')');
+    })();
   </script>
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/bcg.css">
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/MetroJs.min.css">
-  <script src="/assets/js/MetroJs.min.js"></script>
   {% endif %}
 
   {% if page.bloghome == true %}
@@ -65,5 +68,5 @@
   <link rel="shortcut icon" href="{{site.baseurl}}/assets/images/favicon-16.ico">
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{site.baseurl}}/feed.xml">
 </head>

@@ -18,7 +18,7 @@ $(document).ready(function() {
     var qry = GetURLParameter('q');
 		var data = [{% for post in site.posts %}{
 		"title"    : "{{ post.title | escape }}",
-		"category" : "{{ post.category }}",
+		"categories" : "{{ post.categories | join: ', ' }}",
 		"tags"	   : "{{post.tags | array_to_sentence_string}}",
 		"url"      : "{{ post.url }}",
 		"date"     : "{{ post.date | date: "%B %d, %Y" }}"}{% if forloop.last %}{% else %},{% endif %}{% endfor %}];

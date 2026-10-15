@@ -8,11 +8,6 @@ function GetURLParameter(key) {
 
 $( document ).ready(function() {   
 
-	// metro tiles init...
-	if (typeof liveTile == 'function') { 
-		$(".live-tile").liveTile();
-	}
-
 	// light box init...	 
 	if(typeof magnificPopup == 'function') { 
 		$('.ltbox').magnificPopup({type: 'image',

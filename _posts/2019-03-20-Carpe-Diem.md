@@ -6,4 +6,4 @@ categories: Carpe Diem
 tags: Carpe.Diem  死亡诗社
 ---
 
-![](http://ws1.sinaimg.cn/large/6a362e2dgy1g19il7oubpj20gk674aue.jpg)
+![](https://ws1.sinaimg.cn/large/6a362e2dgy1g19il7oubpj20gk674aue.jpg)

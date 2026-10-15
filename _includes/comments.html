@@ -1,0 +1,18 @@
+{% comment %}
+  Comments via utterances (secret-free, GitHub Issues backed).
+  Replaces Gitalk, whose clientSecret was publicly exposed in this repo.
+  One-time setup required by the site owner:
+    1. Enable Issues on the repo (already on — Gitalk used them).
+    2. Install the utterances app: https://github.com/apps/utterances
+  Existing Gitalk comment threads (issues titled by pathname) are reclaimed
+  automatically because issue-term="pathname" matches Gitalk's id.
+{% endcomment %}
+<section id="comments">
+  <script src="https://utteranc.es/client.js"
+          repo="no1guangming/no1guangming.github.io"
+          issue-term="pathname"
+          theme="preferred_color_scheme"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>

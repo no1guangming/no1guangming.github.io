@@ -1,8 +1,10 @@
 # Configurations
 markdown: kramdown
 
-# Needed for backward compatibility
-gems: [jekyll-paginate]
+# Plugins (replaces the deprecated `gems` key; required by Jekyll 4+)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
 
 # Permalinks
 permalink:        /blog/:year/:month/:day/:title
@@ -51,20 +53,10 @@ twitter:        'https://twitter.com/no1guangming'
 #if footersvg is 'true' the social media links will be shown top on the copy right in the footer
 footersvg: 'true'
 
-# GitTalk
-GitTalk:
-  enable: true
-  clientID: '***REMOVED***'
-  clientSecret: '***REMOVED***'
-  repo: 'no1guangming.github.io'
-  owner: 'no1guangming'
-
 # Blog Configurations
 paginate: 10 # Posts per page on the blog index
 paginate_path: '/blog/page:num'
 destination: ./_site
-plugins:
-  - jekyll-sitemap
 
 
 

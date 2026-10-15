@@ -1,0 +1,19 @@
+{% comment %}
+  Random classical-Chinese poem via jinrishici (official SDK, version-pinned + SRI).
+  Replaces the previous inline snippet duplicated across about/ and resume/.
+  Output is written with textContent (not innerHTML) to avoid any injection path.
+{% endcomment %}
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+        charset="utf-8"
+        crossorigin="anonymous"
+        integrity="sha384-yOoQrT4xD0j+vU+LHsL0q3J2N1PLI02X+gz+dPpibLgAfdZRAbW65Y+4V4JVfIET"></script>
+<div id="poem_sentence"></div>
+<div id="poem_info"></div>
+<script>
+  jinrishici.load(function (result) {
+    var sentence = document.querySelector("#poem_sentence");
+    var info = document.querySelector("#poem_info");
+    sentence.textContent = result.data.content;
+    info.textContent = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》';
+  });
+</script>

@@ -4,6 +4,7 @@ title:  Markdown basics
 date:   2014-06-24 23:30:58
 categories: design markdown
 tags: Design Markdown
+published: false
 ---
 
 Markdown is intended to be as easy-to-read and easy-to-write as is feasible.

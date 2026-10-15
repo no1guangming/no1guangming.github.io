@@ -4,6 +4,7 @@ title:  Another Sharepoint post
 date:   2014-07-07 15:30:00
 categories: SharePoint
 tags: SharePoint Designer
+published: false
 ---
 
 A blog is a Web site that enables you or your organization to quickly share ideas and information. Blogs contain posts that are dated and listed in reverse chronological order. People can comment on your posts, as well as provide links to interesting sites, photos, and related blogs.
@@ -14,7 +15,7 @@ You can create a post on a SharePoint blog by using a Web browser, if you have p
 
  Note   If your Web browser doesn't support ActiveX controls, then the formatting toolbar may not be available. However, you can use basic HTML tags to format the text in your blog posts.
 
-[![This is a test](http://lorempixel.com/400/200/sports/1/ "A title!"){:class="img-responsive image-center thumbnail " height="200px" width="400px"}](http://lorempixel.com/400/200/sports/1/){:class="ltbox"}
+[![This is a test](https://lorempixel.com/400/200/sports/1/ "A title!"){:class="img-responsive image-center thumbnail " height="200px" width="400px"}](https://lorempixel.com/400/200/sports/1/){:class="ltbox"}
 
 You can also post content to a blog by doing the following:
 
