@@ -61,4 +61,4 @@ destination: ./_site
 
 
 # Custom vars
-version:          0.9x beta 2
+version:          '0.9x beta 2'

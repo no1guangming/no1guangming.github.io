@@ -11,13 +11,22 @@
 
   <!-- Canonical & Open Graph -->
   <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.title }}">
-  {% if page.title == "Home" %}
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/bcg1.jpg">
+  {% if page.layout == "post" %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {% endif %}
+  <meta property="og:image" content="{% if page.cover %}{{ page.cover | prepend: site.url | prepend: site.baseurl }}{% elsif page.title == "Home" %}{{ site.url }}{{ site.baseurl }}/assets/images/bcg1.jpg{% endif %}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  {% if page.cover or page.title == "Home" %}
+  <meta name="twitter:image" content="{% if page.cover %}{{ page.cover | prepend: site.url | prepend: site.baseurl }}{% else %}{{ site.url }}{{ site.baseurl }}/assets/images/bcg1.jpg{% endif %}">
   {% endif %}
 
   {% if page.title == "Home" %}

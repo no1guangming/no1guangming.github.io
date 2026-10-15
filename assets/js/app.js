@@ -8,8 +8,11 @@ function GetURLParameter(key) {
 
 $( document ).ready(function() {   
 
-	// light box init...	 
-	if(typeof magnificPopup == 'function') { 
+	// light box init...
+	// NOTE: magnificPopup is defined on jQuery's prototype ($.fn.magnificPopup),
+	// not in global scope, so `typeof magnificPopup` is always 'undefined'
+	// and the old check never ran. Check $.fn instead.
+	if (window.jQuery && jQuery.fn && jQuery.fn.magnificPopup) {
 		$('.ltbox').magnificPopup({type: 'image',
 			closeOnContentClick: true,
 			closeBtnInside: false,

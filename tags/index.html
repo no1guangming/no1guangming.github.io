@@ -41,7 +41,7 @@ theme: red
         // github的jekyll不支持tag生成静态文件
         // 通过一个页面内的显示隐藏实现
         function getQueryString(name) { 
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+            var reg = new RegExp("(^|&)" + name + "=([^"]*)(&|$)", "i"); 
             var r = window.location.search.substr(1).match(reg); 
             if (r != null) return decodeURIComponent(r[2]); 
             return null; 
@@ -49,7 +49,16 @@ theme: red
         var tagName = getQueryString('tag')
         let attrFilter = '[tag]'
         if(tagName){
-            attrFilter = '[tag="'+tagName+'"]'
+            // 防注入：URL 参数不能直接拼进选择器（非法字符会导致
+            // querySelectorAll 抛异常、标签功能失效），先做 CSS 转义
+            var safeTag = (window.CSS && CSS.escape) ? CSS.escape(tagName) : tagName.replace(/["\\\]]/g, '')
+            // 只接受页面上真实存在的标签，避免无效值触发异常
+            var known = {}
+            document.querySelectorAll('h3[tag]').forEach(function(h){ known[h.getAttribute('tag')] = true })
+            if(known[tagName]){
+                attrFilter = '[tag="'+safeTag+'"]'
+            }
+            tagName = known[tagName] ? tagName : null
         }
         var dom1 = document.querySelectorAll('h3'+attrFilter)
         var dom2 = document.querySelectorAll('ul'+attrFilter)
@@ -57,8 +66,8 @@ theme: red
             dom1[i].style.display = 'block'
             dom2[i].style.display = 'block'
         }
-        // 改变标题
-        if(document.querySelectorAll('h1')[1]){
+        // 改变标题（仅当 tag 参数有效时才追加）
+        if(tagName && document.querySelectorAll('h1')[1]){
             var text = document.querySelectorAll('h1')[1].innerText
             document.querySelectorAll('h1')[1].innerText = text +' - '+ tagName
         }
