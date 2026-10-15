@@ -8,33 +8,49 @@
   Note: Gitalk stored the pathname as an issue LABEL, not the title, so
   utterances (issue-term="pathname", which matches the title) will NOT
   auto-reuse old threads until those issue titles are set to the pathname.
-  New comments create new issues. A self-check hint shows if the iframe
-  fails to load (e.g. app not authorized for this repo, or a browser
-  content blocker is intercepting utteranc.es).
+  New comments create new issues.
+
+  Robust self-diagnosis so the section is never a silent blank:
+    - A visible status line is shown immediately (no display:none void).
+    - If client.js fails to LOAD (blocked by a privacy/ad blocker, or
+      network cannot reach utteranc.es), an onerror handler shows a
+      clear "blocked" message right away.
+    - If the script loads but no iframe appears after 10s (e.g. the
+      utterances app is not authorized for this repo), a guidance
+      message replaces the status line.
 {% endcomment %}
 <section id="comments">
-  <script src="https://utteranc.es/client.js"
-          repo="no1guangming/no1guangming.github.io"
-          issue-term="pathname"
-          theme="preferred_color_scheme"
-          crossorigin="anonymous"
-          async>
-  </script>
-
-  <p id="comments-fallback" style="display:none;color:#999;font-size:.9em;line-height:1.7;margin-top:1.2em;">
-    评论区未能加载。请排查：<br/>
-    ① 是否已在 GitHub 安装 <a href="https://github.com/apps/utterances" target="_blank" rel="noopener">utterances</a> 应用，并在授权时把本仓库 <code>no1guangming.github.io</code> 纳入访问范围（前往 <a href="https://github.com/settings/installations" target="_blank" rel="noopener">GitHub → Settings → Applications</a> 查看该应用的 Repository access）；<br/>
-    ② 浏览器广告 / 隐私拦截插件是否拦截了 <code>utteranc.es</code>（可用无痕窗口打开本页验证）。
+  <p id="comments-status" style="color:#888;font-size:.9em;line-height:1.7;margin-top:1.2em;">
+    评论区加载中…（若 10 秒后仍无内容，请见下方排查提示）
   </p>
 
   <script>
     (function () {
       var box = document.getElementById('comments');
-      var hint = document.getElementById('comments-fallback');
-      if (!box || !hint) return;
+      var status = document.getElementById('comments-status');
+      if (!box) return;
+      // Inject the utterances script dynamically so we can catch a load
+      // failure (blocked by an extension, or utteranc.es unreachable).
+      var s = document.createElement('script');
+      s.src = 'https://utteranc.es/client.js';
+      s.setAttribute('repo', 'no1guangming/no1guangming.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      s.setAttribute('theme', 'preferred_color_scheme');
+      s.setAttribute('crossorigin', 'anonymous');
+      s.async = true;
+      s.onerror = function () {
+        if (status) {
+          status.style.color = '#c0392b';
+          status.innerHTML = '⚠️ 无法加载 utteranc.es 脚本，很可能被浏览器的广告 / 隐私拦截插件阻挡，' +
+            '或当前网络无法访问该站点。<br/>请：① 暂时关闭拦截插件后刷新；② 或改用无痕窗口打开本页；' +
+            '③ 确认网络可访问 <a href="https://utteranc.es" target="_blank" rel="noopener">https://utteranc.es</a>。';
+        }
+      };
+      box.appendChild(s);
+
       function hasFrame() {
         var f = box.querySelector('iframe');
-        if (f) { hint.style.display = 'none'; return true; }
+        if (f) { if (status) status.style.display = 'none'; return true; }
         return false;
       }
       if (hasFrame()) return;
@@ -45,8 +61,15 @@
         obs.observe(box, { childList: true, subtree: true });
       }
       setTimeout(function () {
-        if (!hasFrame()) hint.style.display = 'block';
-      }, 6000);
+        if (!hasFrame() && status && status.style.display !== 'none') {
+          status.style.color = '#c0392b';
+          status.innerHTML = '评论区未能显示。请排查：<br/>' +
+            '① 是否已在 GitHub 安装 <a href="https://github.com/apps/utterances" target="_blank" rel="noopener">utterances</a> 应用，' +
+            '且授权范围包含本仓库 <code>no1guangming.github.io</code>（前往 ' +
+            '<a href="https://github.com/settings/installations" target="_blank" rel="noopener">GitHub → Settings → Applications</a> 查看该应用的 Repository access）；<br/>' +
+            '② 浏览器广告 / 隐私拦截插件是否拦截了 <code>utteranc.es</code>（可无痕窗口验证）。';
+        }
+      }, 10000);
     })();
   </script>
 </section>
