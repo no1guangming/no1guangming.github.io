@@ -2,10 +2,15 @@
   Comments via utterances (secret-free, GitHub Issues backed).
   Replaces Gitalk, whose clientSecret was publicly exposed in this repo.
   One-time setup required by the site owner:
-    1. Enable Issues on the repo (already on — Gitalk used them).
+    1. Enable Issues on the repo (already on - Gitalk used them).
     2. Install the utterances app: https://github.com/apps/utterances
-  Existing Gitalk comment threads (issues titled by pathname) are reclaimed
-  automatically because issue-term="pathname" matches Gitalk's id.
+       and authorize THIS repo (no1guangming.github.io) in the access scope.
+  Note: Gitalk stored the pathname as an issue LABEL, not the title, so
+  utterances (issue-term="pathname", which matches the title) will NOT
+  auto-reuse old threads until those issue titles are set to the pathname.
+  New comments create new issues. A self-check hint shows if the iframe
+  fails to load (e.g. app not authorized for this repo, or a browser
+  content blocker is intercepting utteranc.es).
 {% endcomment %}
 <section id="comments">
   <script src="https://utteranc.es/client.js"
@@ -14,5 +19,34 @@
           theme="preferred_color_scheme"
           crossorigin="anonymous"
           async>
+  </script>
+
+  <p id="comments-fallback" style="display:none;color:#999;font-size:.9em;line-height:1.7;margin-top:1.2em;">
+    评论区未能加载。请排查：<br/>
+    ① 是否已在 GitHub 安装 <a href="https://github.com/apps/utterances" target="_blank" rel="noopener">utterances</a> 应用，并在授权时把本仓库 <code>no1guangming.github.io</code> 纳入访问范围（前往 <a href="https://github.com/settings/installations" target="_blank" rel="noopener">GitHub → Settings → Applications</a> 查看该应用的 Repository access）；<br/>
+    ② 浏览器广告 / 隐私拦截插件是否拦截了 <code>utteranc.es</code>（可用无痕窗口打开本页验证）。
+  </p>
+
+  <script>
+    (function () {
+      var box = document.getElementById('comments');
+      var hint = document.getElementById('comments-fallback');
+      if (!box || !hint) return;
+      function hasFrame() {
+        var f = box.querySelector('iframe');
+        if (f) { hint.style.display = 'none'; return true; }
+        return false;
+      }
+      if (hasFrame()) return;
+      if (window.MutationObserver) {
+        var obs = new MutationObserver(function () {
+          if (hasFrame()) obs.disconnect();
+        });
+        obs.observe(box, { childList: true, subtree: true });
+      }
+      setTimeout(function () {
+        if (!hasFrame()) hint.style.display = 'block';
+      }, 6000);
+    })();
   </script>
 </section>
