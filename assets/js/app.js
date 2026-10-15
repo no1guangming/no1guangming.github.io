@@ -18,6 +18,7 @@
       targets[i].classList.toggle('in');
     }
     btn.classList.toggle('collapsed');
+      btn.setAttribute('aria-expanded', String(targets[0].classList.contains('in')));
   });
 
   /* ---------- ② 返回顶部按钮 ---------- */
