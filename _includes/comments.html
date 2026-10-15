@@ -35,7 +35,12 @@
       s.src = 'https://utteranc.es/client.js';
       s.setAttribute('repo', 'no1guangming/no1guangming.github.io');
       s.setAttribute('issue-term', 'pathname');
-      s.setAttribute('theme', 'preferred_color_scheme');
+      // NOTE: theme 值必须用连字符（'preferred-color-scheme'）。
+      // client.js 只精确匹配 'preferred-color-scheme' 才会映射为
+      // github-light/github-dark；写成下划线会原样传给 iframe，
+      // 其主题 CSS（/stylesheets/themes/preferred_color_scheme/utterances.css）
+      // 返回 404，渲染 Promise 永不完成，评论区将永远加载不出来。
+      s.setAttribute('theme', 'preferred-color-scheme');
       s.setAttribute('crossorigin', 'anonymous');
       s.async = true;
       s.onerror = function () {
