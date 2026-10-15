@@ -91,9 +91,6 @@ theme: red
 所以友情链接必须放在第一位，感谢他！
 
 
-[Abdel Raoof](http://abdelraoof.com/)
-
-本网站模板作者，来自阿拉伯联合酋长国的大神，好喜欢他写的这个模板。
 
 
 
