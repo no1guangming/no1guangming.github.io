@@ -41,7 +41,8 @@ description: Search for Jekyll Metro
     resultsTitle.innerHTML = '';
     resultsList.innerHTML = '';
     message.innerHTML = '';
-    if (q.length <= 3) return; // 与原插件一致：少于 4 个字符不搜索
+    if (q.length < 1) return; // 全站文章量小，放宽为 1 个字符即可搜索
+                               // （原插件 >3 的阈值会导致「宋词」等 2 字中文词搜不出结果）
     var words = q.split(/\s+/);
     var matches = data.filter(function (p) {
       var hay = (p.title + ' ' + p.tags + ' ' + p.categories).toLowerCase();
