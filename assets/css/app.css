@@ -95,3 +95,34 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/***** 轻量图片灯箱（替代 magnific-popup，样式与 app.js 配套） *****/
+.vanilla-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, .85);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+.vanilla-lightbox.open {
+    display: flex;
+}
+.vanilla-lightbox .vl-img {
+    max-width: 92vw;
+    max-height: 90vh;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+}
+.vanilla-lightbox .vl-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 40px;
+    line-height: 1;
+    cursor: pointer;
+}

@@ -35,20 +35,17 @@
   <title>{{ page.title }} &middot; {{ site.title }}</title>
   {% endif %}
   
-  <!-- CSS -->
+  <!-- CSS（按需加载：github.css 仅含代码块的页面加载；灯箱样式已并入 app.css） -->
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/bootstrap.css">
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/app.css">
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/colors.css">
+  {% if page.content contains "```" or page.content contains "~~~" or page.content contains "<pre" %}
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/github.css">
+  {% endif %}
   <link rel="stylesheet" href="{{site.baseurl}}/assets/iconfont/iconfont.css">
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/magnific-popup.css">
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/controls.css">
 
-  <!-- JS: defer so they never block first paint; order preserved -->
-  <script defer src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
-  <script defer src="{{site.baseurl}}/assets/js/bootstrap.min.js"></script>
-  <script defer src="{{site.baseurl}}/assets/js/jekyll-search.js"></script>
-  <script defer src="{{site.baseurl}}/assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- JS：2026 去 jQuery 重构后仅剩一个文件（菜单折叠/返回顶部/灯箱） -->
   <script defer src="{{site.baseurl}}/assets/js/app.js"></script>
 
   {% if page.title == "Home" %}
@@ -56,7 +53,7 @@
   <script>
     (function () {
       var imageBase = '{{site.baseurl}}/assets/images/';
-      var images = ['bcg1.jpg', 'bcg2.jpg', 'bcg3.jpg', 'bcg4.jpg'];
+      var images = ['bcg1.webp', 'bcg2.webp', 'bcg3.webp', 'bcg4.webp'];
       var pick = images[Math.floor(Math.random() * images.length)];
       document.documentElement.style.setProperty('--bg-image', 'url(' + imageBase + pick + ')');
     })();

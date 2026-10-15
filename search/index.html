@@ -14,26 +14,59 @@ description: Search for Jekyll Metro
   <ul class="results-list"></ul>
 </div>
 <script>
-$(document).ready(function() {
-    var qry = GetURLParameter('q');
-		var data = [{% for post in site.posts %}{
+/* 原生 JS 搜索（2026 重构）：替代 jQuery 版 jekyllSearch 插件，
+   数据仍由 Jekyll 内联生成，逻辑为「标题/标签/分类 包含全部关键词」 */
+(function () {
+  var data = [{% for post in site.posts %}{
 		"title"    : "{{ post.title | escape }}",
 		"categories" : "{{ post.categories | join: ', ' }}",
 		"tags"	   : "{{post.tags | array_to_sentence_string}}",
 		"url"      : "{{ post.url }}",
 		"date"     : "{{ post.date | date: "%B %d, %Y" }}"}{% if forloop.last %}{% else %},{% endif %}{% endfor %}];
 
-    var x = $(".search").jekyllSearch({
-			      jsonData            : null,
-            template            : '<li><h4><a href="{url}" title="{title}">{title}</a></h4>Posted on {date}<br>Tags: {tags} </li>',
-            searchResults       : '#results',
-            searchResultsTitle  : '<h3>Search Results</h3>',
-            limit               : '10',
-            noResults           : '<h3>Your search did not match any documents.</h3>Suggestions:<ul><li>Make sure that all words are spelled correctly.</li><li>Try different keywords.</li><li>Try more general keywords.</li><li>Try fewer keywords.</li></ul>'
-     });
+  var input = document.querySelector('.search');
+  var resultsTitle = document.querySelector('.results-title');
+  var resultsList = document.querySelector('.results-list');
+  var message = document.querySelector('.search-message');
+  var NO_RESULTS = '<h3>Your search did not match any documents.</h3>Suggestions:<ul><li>Make sure that all words are spelled correctly.</li><li>Try different keywords.</li><li>Try more general keywords.</li><li>Try fewer keywords.</li></ul>';
 
-     if(qry) {
-			$(".search").val(qry).trigger('keyup').focus();
-     }
-});
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function render(q) {
+    q = (q || '').trim().toLowerCase();
+    resultsTitle.innerHTML = '';
+    resultsList.innerHTML = '';
+    message.innerHTML = '';
+    if (q.length <= 3) return; // 与原插件一致：少于 4 个字符不搜索
+    var words = q.split(/\s+/);
+    var matches = data.filter(function (p) {
+      var hay = (p.title + ' ' + p.tags + ' ' + p.categories).toLowerCase();
+      return words.every(function (w) { return hay.indexOf(w) !== -1; });
+    }).slice(0, 10);
+
+    if (matches.length) {
+      resultsTitle.innerHTML = '<h3>Search Results</h3>';
+      resultsList.innerHTML = matches.map(function (p) {
+        return '<li><h4><a href="' + p.url + '" title="' + esc(p.title) + '">' + esc(p.title) + '</a></h4>' +
+               'Posted on ' + esc(p.date) + '<br>Tags: ' + esc(p.tags) + '</li>';
+      }).join('');
+    } else {
+      resultsTitle.innerHTML = NO_RESULTS;
+    }
+  }
+
+  input.addEventListener('input', function () { render(input.value); });
+
+  // 支持 /search/?q=xxx 直达
+  var qry = new URLSearchParams(window.location.search).get('q');
+  if (qry) {
+    input.value = qry;
+    render(qry);
+    input.focus();
+  }
+})();
 </script>
