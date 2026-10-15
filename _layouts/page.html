@@ -13,6 +13,9 @@ layout: master
     <div class="col-md-8 col-sm-7 col-md-offset-3 col-sm-offset-4">
       <h1>{{page.title}}</h1>
       {{content}}
+      {% if page.comments == true %}
+      {% include comments.html %}
+      {% endif %}
       {% include footer.html %}
     </div>
   </div> <!-- row -->
