@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hi, I am  guangming wang
-description: About Me page of guangming wang
+title: Hi, I am  Guangming Wang
+description: About Me page of Guangming Wang
 theme: purple
 comments: true
 ---
