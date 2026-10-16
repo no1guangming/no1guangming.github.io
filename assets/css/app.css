@@ -126,3 +126,8 @@
     line-height: 1;
     cursor: pointer;
 }
+
+/***** 文章段落间距：主题默认 p margin 只有 10.5px，视觉上段落挤在一起 *****/
+article p {
+    margin-bottom: 1.25em;
+}
