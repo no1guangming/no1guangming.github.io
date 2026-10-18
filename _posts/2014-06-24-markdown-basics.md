@@ -1,6 +1,5 @@
 ---
 layout: post
-published: false
 title:  Markdown basics
 date:   2014-06-24 23:30:58
 categories: design markdown
