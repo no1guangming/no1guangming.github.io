@@ -19,12 +19,12 @@ bloghome: true
                   </a>
                 </h2>
                 <div class="publish-tag">
-                  <span class="fa fa-calendar"></span>&nbsp;PUBLISHED ON {{ post.date | date: "%B %d, %Y" }}
+                  <span class="fa fa-calendar"></span>&nbsp;发布于 {{ post.date | date: "%Y-%m-%d" }}
                 </div>
 		              <div class="tags">
                   {% if post.tags %}
               		{% for tag in post.tags %}
-                			<a href="{{site.baseurl}}/tags/index.html?tag={{tag}}"><span class="label btn-orange">{{tag}}</span></a>
+                			<a href="{{site.baseurl}}/tags/index.html?tag={{tag | url_encode}}"><span class="label btn-orange">{{tag}}</span></a>
               		{% endfor %}
            		 {% else %}
               		None

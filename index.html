@@ -17,7 +17,7 @@ description: '一个差时症患者'
 				<a href="about/" title="About Me">
 					<div class="tile purple profile">
 						<h2 class="title">About Me</h2>
-						<p>Hello World.</p>
+						<p>{{site.tagline}}</p>
 					</div>
 				</a>
 		    </div>
@@ -42,9 +42,9 @@ description: '一个差时症患者'
 
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				{% for post in site.posts offset:1 limit:1 %}
-				<a href="{{post.url}}" title="Recent Article">
+				<a href="{{post.url}}" title="上一篇">
 					<div class="tile green">
-						<h3 class="title">Recent Article</h3>
+						<h3 class="title">上一篇</h3>
 						<h4 class="title">{{ post.title }}</h4>
 						<p> {{ post.content | strip_html | truncate: 80 }}</p>
 					</div>
@@ -55,9 +55,9 @@ description: '一个差时症患者'
 
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				{% for post in site.posts limit:1 %}
-				<a href="{{post.url}}" title="Latest Article">
+				<a href="{{post.url}}" title="最新文章">
 					<div class="tile red">
-						<h3 class="title">Latest Article</h3>
+						<h3 class="title">最新文章</h3>
 						<h4 class="title">{{ post.title }}</h4>
 						<p> {{ post.content | strip_html | truncate: 80 }}</p>
 					</div>
@@ -74,9 +74,9 @@ description: '一个差时症患者'
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				{% for post in site.posts %}
 					{% if post.featured == true %}
-					<a href="{{post.url}}" title="Featured Article">
+					<a href="{{post.url}}" title="推荐文章">
 						<div class="tile orange">
-							<h3 class="title">Featured Article</h3>
+							<h3 class="title">推荐文章</h3>
 							<h4 class="title">{{ post.title }}</h4>
 							<p> {{ post.content | strip_html | truncate: 80 }}</p>
 						</div>
