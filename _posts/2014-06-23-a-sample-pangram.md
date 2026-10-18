@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title:  "A Sample pangram"
 date:   2014-06-23 21:28:58
 categories: sample pangram

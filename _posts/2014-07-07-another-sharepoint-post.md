@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title:  Another Sharepoint post
 date:   2014-07-07 15:30:00
 categories: SharePoint
