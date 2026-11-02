@@ -1,7 +1,7 @@
 ---
 layout: post
 title: An email relay where neither side sees the other's address
-date:   2026-11-02 12:30:00
+date:   2026-11-02 2:00:00
 lang: en
 description: A classifieds site has to let strangers talk without handing over an inbox. Here is the relay I built on Cloudflare Workers, the forgery hole in the obvious design, and what it still does not protect against.
 categories: Engineering
