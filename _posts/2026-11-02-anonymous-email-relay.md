@@ -29,10 +29,9 @@ Requirement 2 is the one that gets skipped. Hiding the seller is the obvious hal
 
 The relay uses two different addresses, and the gap between them is the whole design.
 
-| Address | Scoped to | Who is allowed to see it |
-| --- | --- | --- |
-| `reply-<12 chars>@minglist.top` | one ad | everyone; it is printed on the ad page |
-| `reply+<24 chars>@minglist.top` | one conversation | only the seller, inside the `Reply-To` of a forwarded mail |
+**`reply-<12 chars>@minglist.top`** — scoped to one ad, and public: it is printed on the ad page.
+
+**`reply+<24 chars>@minglist.top`** — scoped to one conversation, and only ever seen by the seller, inside the `Reply-To` of a forwarded message.
 
 The first is per-ad. Twelve characters from a 36-symbol alphabet is about 62 bits, so it cannot be enumerated, and it is deliberately public because the ad page has to show it.
 

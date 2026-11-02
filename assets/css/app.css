@@ -131,3 +131,19 @@
 article p {
     margin-bottom: 1.25em;
 }
+
+/***** 代码块：Bootstrap 的 code{white-space:nowrap} 会作用到 <pre><code>，
+       把多行代码的换行折叠成一个空格（整段压成一行）。行内 code 需要 nowrap，
+       块级 code 必须恢复 pre。同时清掉行内代码的粉底/红字，否则整块代码是粉色的。
+       长行改为块内横向滚动，避免撑出页面级横向滚动条。 *****/
+pre {
+    overflow-x: auto;
+}
+
+pre code {
+    white-space: pre;
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+}
