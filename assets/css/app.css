@@ -138,6 +138,10 @@ article p {
        长行改为块内横向滚动，避免撑出页面级横向滚动条。 *****/
 pre {
     overflow-x: auto;
+    background: #f6f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 12px 14px;
 }
 
 pre code {
