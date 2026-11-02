@@ -12,7 +12,7 @@ A classifieds ad carries an awkward requirement inside it. A stranger has to be 
 
 Most sites solve this by hiding the address behind a contact form. That works until someone wants to reply from their phone at eleven at night, which is when people reply. So the address has to travel by email, and an email address is the one thing you cannot take back once you send it.
 
-[MingList](https://minglist.top) gives every ad a throwaway address instead. Both sides write to it. Neither side ever sees the other's. This is how it works, the design flaw I hit in the first version, and what it still does not protect against.
+[MingList](https://minglist.top) gives every ad a throwaway address instead. Both sides end up writing to it. Neither side ever sees the other's. This is how it works, the hole in the obvious design, and what it still does not protect against.
 
 ## What "anonymous" has to mean
 
@@ -29,27 +29,28 @@ Requirement 2 is the one that gets skipped. Hiding the seller is the obvious hal
 
 The relay uses two different addresses, and the gap between them is the whole design.
 
-**`reply-<12 chars>@minglist.top`** — scoped to one ad, and public: it is printed on the ad page.
+**`reply-<12 chars>@minglist.top`** — scoped to one ad. It is never printed on the ad page. It is the address the server writes *from*, and one a buyer only learns after the seller has already answered them once.
 
 **`reply+<24 chars>@minglist.top`** — scoped to one conversation, and only ever seen by the seller, inside the `Reply-To` of a forwarded message.
 
-The first is per-ad. Twelve characters from a 36-symbol alphabet is about 62 bits, so it cannot be enumerated, and it is deliberately public because the ad page has to show it.
+The first is per-ad and random: twelve characters from a 36-symbol alphabet, about 62 bits. Nobody can walk the space looking for live ads to mail, and a buyer who has received one address cannot derive the address of the next ad from it.
 
-The second exists because of a routing problem. When the seller hits **Reply** in their own mail client, that message has to reach the buyer. But it must not reveal the seller's address, and the seller must not have the buyer's address to put in the `To:` field. So the relay hands the seller a `Reply-To` that identifies *the conversation* rather than the person.
+Worth being exact about the first hop, because it is not email. A buyer who has never written before uses the contact form on the ad page. The server turns that into a message sent from `reply-7fq2m9x1@`, displayed as "Interested buyer", to the seller's real inbox. The buyer's own address is recorded on the thread and never handed to the seller.
+
+The second address exists because of a routing problem. When the seller hits **Reply** in their own mail client, that message has to reach the buyer. But it must not reveal the seller's address, and the seller must not have the buyer's address to put in the `To:` field. So the relay hands the seller a `Reply-To` that identifies *the conversation* rather than the person.
 
 ```
-buyer's mail app            relay worker              seller's mailbox
-      |                          |                          |
-      |-- to: reply-7fq2m9x1@ -> |                          |
-      |                          |-- From: reply-7fq2m9x1@ ->|
-      |                          |   (shown as "Interested buyer")
-      |                          |   Reply-To: reply+k3n8p2w7@
-      |                          |                          |
-      |                          | <- to: reply+k3n8p2w7@ --|
-      | <- From: reply-7fq2m9x1@ |                          |
+buyer (web form)         relay worker             seller's inbox
+      |                       |                         |
+      |-- POST /contact ----->|                         |
+      |                       |-- From: reply-7fq2m9x1@ -->|
+      |                       |   ("Interested buyer")
+      |                       |   Reply-To: reply+k3n8p2w7@
+      |                       |<-- to: reply+k3n8p2w7@ --|
+      |<-- From: reply-7fq2m9x1@ (copy of the reply) ----|
 ```
 
-Every hop rewrites both the envelope sender and the display name. The buyer sees "Seller" writing from the same address they originally wrote to. The seller sees "Interested buyer" writing from the ad's address. Neither mailbox ever contains the other's real address.
+Every hop rewrites both the envelope sender and the display name. The seller sees "Interested buyer" writing from the ad's address; the buyer sees "Seller" writing from that same address, which is the only address they ever learn. Neither mailbox ever contains the other's real address.
 
 ## The hole in the obvious design
 
@@ -74,7 +75,7 @@ That check has a consequence worth spelling out: the reverse direction cannot al
 
 The last rule is the blunt one: any local part that is neither `reply+` nor `reply-` is dropped and never forwarded. A relay that forwards unknown addresses is an open relay with extra steps.
 
-## Three things that cost me an afternoon
+## Three things that are easy to get wrong
 
 **Local parts must be lowercase.** Mail delivery chains are allowed to normalise the local part, and some do. A token with uppercase letters in it can come back lowercased, fail the lookup, and the conversation dies with no error anyone can see. Everything that appears in an address is generated from the alphabet `a-z0-9` only, and the lookup still does a case-insensitive fallback for old rows.
 
@@ -92,7 +93,7 @@ That is fine for deciding whether something starts with `multipart/`. It is fata
 
 The buyer's mail client learns `reply-<12>@` from the `Reply-To` of a forwarded message. It is public, unauthenticated, and every message that arrives at it is written to the database *and* forwarded to a real inbox. Unbounded, that is a way to bomb somebody by knowing one address.
 
-So inbound mail is limited to 30 messages per hour per relay address. Thirty is not a security number, it is a plausibility number: real conversations do not exceed it, and one angry person can still send eleven messages in a row without being cut off.
+So inbound mail is limited to 30 messages per hour per relay address. Thirty is not a security number, it is a plausibility number: real conversations rarely exceed it, and one angry person can still send eleven messages in a row without being cut off.
 
 ## What this does not protect against
 
