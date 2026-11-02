@@ -11,7 +11,7 @@ layout: master
       <article class="col-md-12 col-xs-12 justified">
         <h1 class="post-title">{{ page.title }}</h1>
         <div class="publish-tag">
-          <span class="fa fa-calendar"></span>&nbsp;发布于 {{ page.date | date: "%Y-%m-%d" }}
+          <span class="fa fa-calendar"></span>&nbsp;{% if page.lang == 'en' %}Published{% else %}发布于{% endif %} {{ page.date | date: "%Y-%m-%d" }}
         </div>
         {{ content }}
         <br/>
