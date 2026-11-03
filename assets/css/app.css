@@ -174,11 +174,12 @@ article thead th {
 article th,
 article td {
     border: 1px solid #e5e7eb;
-    padding: 8px 10px;
+    padding: 7px 9px;
     vertical-align: top;
     text-align: left;
+    /* 只用 overflow-wrap：仅在单词本身宽于整行时才断。
+       不可用 word-break:break-word，那会让 "1995" 被折成 "199" + "5"。 */
     overflow-wrap: break-word;
-    word-break: break-word;
 }
 
 article tbody tr:nth-child(even) {
