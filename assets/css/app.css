@@ -151,3 +151,46 @@ pre code {
     padding: 0;
     font-size: inherit;
 }
+
+/***** 表格：kramdown 输出的是裸 <table>，不带 Bootstrap 的 .table 类，
+       默认既无边框也无内边距，多列表格会挤成一团。这里补齐基础样式。
+       另外文章容器带 .justified（text-align:justify），会作用到单元格，
+       窄列里两端对齐会产生大段字间空隙，故单元格强制左对齐。 *****/
+article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.55;
+    text-align: left;
+}
+
+article thead th {
+    background: #f6f8fa;
+    font-weight: 600;
+    text-align: left;
+}
+
+article th,
+article td {
+    border: 1px solid #e5e7eb;
+    padding: 8px 10px;
+    vertical-align: top;
+    text-align: left;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+article tbody tr:nth-child(even) {
+    background: #fcfcfd;
+}
+
+@media (max-width: 767px) {
+    article table {
+        font-size: 13px;
+    }
+    article th,
+    article td {
+        padding: 6px 7px;
+    }
+}
