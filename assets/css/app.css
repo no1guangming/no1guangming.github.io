@@ -195,3 +195,19 @@ article tbody tr:nth-child(even) {
         padding: 6px 7px;
     }
 }
+
+/***** 窄屏：六列表格在 390px 下每列只剩四五个汉字的宽度，纵向堆叠完全不可读。
+       kramdown 直出 <table>，没有可加的 wrapper，所以让 table 自身变成滚动容器
+       （display:block + overflow-x），再给单元格一个 min-width 撑开总宽。
+       ≥992px 不触发，桌面端仍是自适应铺满。 *****/
+@media (max-width: 991px) {
+    article table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    article th,
+    article td {
+        min-width: 104px;
+    }
+}
