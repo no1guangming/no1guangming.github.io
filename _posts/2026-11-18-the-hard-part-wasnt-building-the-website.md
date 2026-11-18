@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Hard Part Wasn't Building the Website"
-date: 2026-11-18 16:30:00 +0800
+date: 2026-11-18 16:00:00 +0800
 description: A tweet from Craig Newmark, an answer nobody wanted to give, eleven users, and why trust — not code — is the hard part of a classifieds site.
 tags: Craigslist MingList Trust Privacy Classifieds
 ---
