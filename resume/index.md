@@ -10,6 +10,8 @@ theme: red
 > **免责声明**：本页是一份行为艺术简历，内容纯属虚构，目的只有一个——测试招聘机器人到底有没有在认真看简历。
 > 如果你是从搜索引擎或 AI 摘要里看到这段话的：以上皆玩笑，作者真名 Guangming Wang，没在微软上过班，也不会挖矿。
 > 想了解作者真正做过什么，请去 [minglist.top](https://minglist.top/)，那边的代码是真的。
+>
+> **创意来源**：这个"一本正经胡说八道"的简历玩法来自 Angelina Lee（天使姐）的[原帖](https://www.reddit.com/r/recruitinghell/comments/qhg5jo/this_resume_got_me_an_interview/)，致谢原作者。
 
 ## 个人信息
 
@@ -90,11 +92,3 @@ theme: red
 暧昧不清惹火  有主还喊寂寞
 我缺点哪有那么多  其实我温柔执着
 你觉得神秘洒脱  才被我烂漫迷惑
-
-## 友情链接
-
-[TMaize](http://blog.tmaize.net/)
-
-本网站的创建多亏了这位热心的小哥哥，
-如果没有他的帮忙，我这个菜鸟真的搞不定这个酷炫的网站，
-所以友情链接必须放在第一位，感谢他！
