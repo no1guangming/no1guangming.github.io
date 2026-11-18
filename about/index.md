@@ -24,5 +24,5 @@ comments: true
 ## 联系我
 
 
-欢迎大家来豆瓣[douban](https://www.douban.com/people/no1guangming/)找我，或者给我发邮件，我的邮箱是bm8xZ3VhbmdtaW5nQGdtYWlsLmNvbQ==
+欢迎大家来豆瓣[douban](https://www.douban.com/people/no1guangming/)找我，或者到我在做的本地分类信息站 [minglist.top](https://minglist.top/) 坐坐。
 
