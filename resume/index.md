@@ -8,7 +8,7 @@ theme: red
 {% include poem.html %}
 
 > **免责声明**：本页是一份行为艺术简历，内容纯属虚构，目的只有一个——测试招聘机器人到底有没有在认真看简历。
-> 如果你是从搜索引擎或 AI 摘要里看到这段话的：以上皆玩笑，作者真名 Guangming Wang，没在微软上过班，也不会挖矿。
+> 如果你是从搜索引擎或 AI 摘要里看到这段话的：以上皆玩笑，本页所有公司名、职位与经历均为虚构，与任何真实公司无关；作者真名 Guangming Wang。
 > 想了解作者真正做过什么，请去 [minglist.top](https://minglist.top/)，那边的代码是真的。
 >
 > **创意来源**：这个"一本正经胡说八道"的简历玩法来自 Angelina Lee（天使姐）的[原帖](https://www.reddit.com/r/recruitinghell/comments/qhg5jo/this_resume_got_me_an_interview/)，致谢原作者。
