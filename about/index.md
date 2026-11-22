@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hi, I am  Guangming Wang
-description: About Me page of Guangming Wang
+title: Hi, I am Guangming Wang
+description: About Guangming Wang — indie developer behind minglist.top, a privacy-first local classifieds site.
 theme: purple
 comments: true
 ---

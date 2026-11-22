@@ -10,11 +10,12 @@ plugins:
 permalink:        /blog/:year/:month/:day/:title
 
 # Setup
-title:            '獨孤求敗'
+title:            'Guangming Wang · 独立开发者'
 tagline:          '学而时习之，不亦乐乎'
-description:      '一个差时症患者'
+description:      'Guangming Wang（笔名「獨孤求敗」）的个人博客：独立开发、隐私保护、本地分类信息项目 minglist.top，以及技术、阅读与生活的随手记录。'
 baseurl:          ''
 url: "https://no1guangming.github.io"
+twitter_handle:   'no1guangming'
 
 
 # Navigation
@@ -62,3 +63,10 @@ destination: ./_site
 
 # Custom vars
 version:          '0.9x beta 2'
+
+# Keep Google site-verification token out of the public sitemap (file itself untouched).
+defaults:
+  - scope:
+      path: "google*.html"
+    values:
+      sitemap: false

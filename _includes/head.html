@@ -10,22 +10,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Canonical & Open Graph -->
-  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  {% capture canonical %}{{ site.url }}{{ site.baseurl }}{{ page.url }}{% endcapture %}
+  {% capture seo_desc %}{% if page.description %}{{ page.description | strip_html | strip_newlines | strip }}{% elsif page.layout == 'post' %}{{ page.excerpt | strip_html | strip_newlines | strip }}{% else %}{{ site.description }}{% endif %}{% endcapture %}
+  {% capture ogimg %}{% if page.cover %}{{ site.url }}{{ site.baseurl }}{{ page.cover }}{% else %}{{ site.url }}{{ site.baseurl }}/assets/images/og-cover.png{% endif %}{% endcapture %}
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="alternate" hreflang="{{ page.lang | default: 'zh-CN' }}" href="{{ canonical }}">
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{% if page.title == "Home" %}{{ site.title }}{% elsif page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}">
-  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:description" content="{{ seo_desc | escape }}">
+  <meta property="og:url" content="{{ canonical }}">
   <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="{% if page.lang == 'en' %}en_US{% else %}zh_CN{% endif %}">
   {% if page.layout == "post" %}
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  <meta property="article:modified_time" content="{% if page.last_modified %}{{ page.last_modified | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}">
   {% endif %}
-  <meta property="og:image" content="{% if page.cover %}{{ page.cover | prepend: site.url | prepend: site.baseurl }}{% else %}{{ site.url }}{{ site.baseurl }}/assets/images/og-cover.png{% endif %}">
+  <meta property="og:image" content="{{ ogimg }}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@{{ site.twitter_handle }}">
+  <meta name="twitter:creator" content="@{{ site.twitter_handle }}">
   <meta name="twitter:title" content="{% if page.title == "Home" %}{{ site.title }}{% elsif page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}">
-  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="twitter:image" content="{% if page.cover %}{{ page.cover | prepend: site.url | prepend: site.baseurl }}{% else %}{{ site.url }}{{ site.baseurl }}/assets/images/og-cover.png{% endif %}">
+  <meta name="twitter:description" content="{{ seo_desc | escape }}">
+  <meta name="twitter:image" content="{{ ogimg }}">
+
+  <!-- JSON-LD structured data: Person 只放真实身份，不写入虚构简历内容 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "url": "{{ site.url }}/",
+        "name": {{ site.title | jsonify }},
+        "description": {{ site.description | jsonify }},
+        "inLanguage": "zh-CN",
+        "publisher": { "@id": "{{ site.url }}/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "{{ site.url }}/#person",
+        "name": "Guangming Wang",
+        "url": "{{ site.url }}/about/",
+        "sameAs": [
+          {{ site.github | jsonify }},
+          {{ site.linkedin | jsonify }},
+          {{ site.twitter | jsonify }},
+          {{ site.instagram | jsonify }},
+          {{ site.stackoverflow | jsonify }},
+          {{ site.douban | jsonify }}
+        ]
+      }
+      {% if page.layout == 'post' %}
+      ,{
+        "@type": "BlogPosting",
+        "@id": "{{ canonical }}#article",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ canonical }}" },
+        "headline": {{ page.title | jsonify }},
+        "description": {{ seo_desc | jsonify }},
+        "image": "{{ ogimg }}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "dateModified": "{% if page.last_modified %}{{ page.last_modified | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+        "inLanguage": "{{ page.lang | default: 'zh-CN' }}",
+        "author": { "@id": "{{ site.url }}/#person" },
+        "publisher": { "@id": "{{ site.url }}/#person" }
+        {% if page.tags %},"keywords": {{ page.tags | jsonify }}{% endif %}
+      }
+      {% endif %}
+    ]
+  }
+  </script>
 
   {% if page.title == "Home" %}
   <title>{{ site.title }} &middot; {{ site.tagline }}</title>
