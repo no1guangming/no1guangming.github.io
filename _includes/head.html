@@ -85,6 +85,8 @@
 
   {% if page.title == "Home" %}
   <title>{{ site.title }} &middot; {{ site.tagline }}</title>
+  {% elsif page.seo_title %}
+  <title>{{ page.seo_title }} &middot; {{ site.title }}</title>
   {% else %}
   <title>{{ page.title }} &middot; {{ site.title }}</title>
   {% endif %}
