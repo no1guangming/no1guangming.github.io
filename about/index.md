@@ -26,7 +26,7 @@ comments: true
 - **浏览和回复都不需要账号。**
 - **发帖落在城市，方便同城的人自己约着见面。**
 - **每个帖子一个中继邮箱**，例如 `reply-osfogyr3xkxw@minglist.top`。买卖双方可以互相写信，但谁都看不到对方的真实邮箱。关闭或删除帖子，地址随即失效；若是自然到期，还留约七天的缓冲让在途的回复送达。
-- **不碰钱，不寄货。** 被多次举报的帖子只是不能再被主人顶起，不给谁挂一个公开的个人分数。
+- **不碰钱，不寄货。** 被多次举报的帖子，发帖人就不能再手动「顶帖」让它排到前面——没有系统自动置顶，也不给谁挂一个公开的个人分数。
 - **核心是本地的实物交换。**
 
 
@@ -41,4 +41,4 @@ I am Guangming Wang, an independent developer. I build small web tools, with a b
 
 Browsing and replying need no account. Each listing is tied to a city and gets its own relay address — `reply-osfogyr3xkxw@minglist.top` — so buyers and sellers can write to each other without either side seeing the other's real email. Close or delete a listing and the address stops at once; if a listing expires naturally, it stays live for about seven more days so replies already in flight can still arrive.
 
-The site does not handle payments or shipping — how and where the exchange happens is up to the two people. Once a listing has enough reports, its owner can no longer bump it; no public score is attached to anyone.
+The site does not handle payments or shipping — how and where the exchange happens is up to the two people. Once a listing has enough reports, its owner can no longer bump it by hand. There is no automatic pinning and no public score attached to anyone.
