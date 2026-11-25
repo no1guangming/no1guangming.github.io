@@ -42,7 +42,8 @@
   /* ---------- ③ 轻量图片灯箱（等价 magnific-popup 的图片模式） ---------- */
   // 用法不变：任意 <a class="ltbox" href="大图"><img ...></a>
   var overlay = null;
-  function openLightbox(src, alt) {
+  var lastTrigger = null;
+  function openLightbox(src, alt, trigger) {
     if (!overlay) {
       overlay = document.createElement('div');
       overlay.className = 'vanilla-lightbox';
@@ -55,15 +56,23 @@
       });
       document.body.appendChild(overlay);
     }
+    lastTrigger = trigger || null;
     overlay.querySelector('.vl-img').src = src;
     overlay.querySelector('.vl-img').alt = alt || '';
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    // 焦点移入灯箱：键盘/读屏用户可直接操作关闭按钮
+    overlay.querySelector('.vl-close').focus();
   }
   function closeLightbox() {
-    if (overlay) {
+    if (overlay && overlay.classList.contains('open')) {
       overlay.classList.remove('open');
       document.body.style.overflow = '';
+      // 关闭后把焦点还给触发链接，避免焦点掉回 document.body
+      if (lastTrigger && typeof lastTrigger.focus === 'function') {
+        lastTrigger.focus();
+      }
+      lastTrigger = null;
     }
   }
   document.addEventListener('click', function (e) {
@@ -71,6 +80,6 @@
     if (!link) return;
     e.preventDefault();
     var img = link.querySelector('img');
-    openLightbox(link.getAttribute('href'), img ? img.alt : link.title);
+    openLightbox(link.getAttribute('href'), img ? img.alt : link.title, link);
   });
 })();
