@@ -96,10 +96,12 @@
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/app.css">
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/colors.css">
   {% if page.content contains "```" or page.content contains "~~~" or page.content contains "<pre" %}
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/github.css">
+  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/github.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{{site.baseurl}}/assets/css/github.css"></noscript>
   {% endif %}
   <link rel="stylesheet" href="{{site.baseurl}}/assets/iconfont/iconfont.css">
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/controls.css">
+  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/controls.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{{site.baseurl}}/assets/css/controls.css"></noscript>
 
   <!-- JS：2026 去 jQuery 重构后仅剩一个文件（菜单折叠/返回顶部/灯箱） -->
   <script defer src="{{site.baseurl}}/assets/js/app.js"></script>

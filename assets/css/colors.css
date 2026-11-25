@@ -17,8 +17,8 @@
 }
 
 .green {
-    background: #00A600;
-    border: 1px solid #007700;
+    background: #007700;
+    border: 1px solid #005500;
 }
 
 .drk-green {
@@ -87,7 +87,7 @@
 .green .left-nav-item a:hover{
     text-decoration: none;
     color: #fff;
-    background: #00A600;
+    background: #007700;
 }
 
 .drk-green .left-nav-item a:hover{
@@ -221,7 +221,7 @@ li.green > a,
 li.green > a:hover,
 li.green > a:focus {
     color: #fff;
-    background: #00A600;
+    background: #007700;
     text-decoration: none;
 }
 
@@ -320,7 +320,7 @@ li.orange > a:focus {
 
 .btn-green {
     color: #fff;
-    background: #00A600;
+    background: #007700;
 }
 
 .btn-drk-green {
